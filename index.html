@@ -7,110 +7,122 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Poppins", sans-serif;
       margin: 0;
-      background: #0b0b0b;
+      background-color: #0a0a0a;
       color: #fff;
-      position: relative;
       overflow-x: hidden;
+    }
+
+    /* Animação de entrada do logo */
+    .intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, #0a0a0a 70%, #000);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      animation: fadeOut 2s ease 4s forwards;
+    }
+
+    .intro h1 {
+      font-size: 3rem;
+      color: #00ff99;
+      text-shadow: 0 0 10px #00ff99, 0 0 20px #a020f0, 0 0 40px #00ff99;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    .intro p {
+      color: #aaa;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      animation: fadeIn 2s ease 1s forwards;
+      opacity: 0;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ff99, 0 0 20px #a020f0; }
+      to { text-shadow: 0 0 25px #a020f0, 0 0 40px #00ff99; }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Fundo com partículas */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: #0a0a0a;
     }
 
     header {
       text-align: center;
-      padding: 20px;
-      background-color: #111;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
-      z-index: 10;
-      position: relative;
+      padding: 2rem;
+      background: linear-gradient(90deg, #00ff99, #a020f0);
+      color: #0a0a0a;
+      border-bottom: 3px solid #00ff99;
+    }
+
+    nav {
+      margin-top: 1rem;
     }
 
     nav a {
-      color: #00ff99;
+      color: #fff;
+      background: #111;
+      margin: 0.3rem;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #a020f0;
+      background: #00ff99;
+      color: #000;
     }
 
     main {
-      padding: 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    section {
-      margin-bottom: 40px;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
     }
 
     h2 {
       color: #00ff99;
       border-bottom: 2px solid #a020f0;
-      display: inline-block;
-      padding-bottom: 5px;
+      padding-bottom: 0.5rem;
     }
 
-    article, .donate, .affiliate {
-      background-color: rgba(255,255,255,0.05);
-      padding: 15px;
-      margin: 15px 0;
+    article {
+      background: #111;
+      padding: 1rem;
+      margin-top: 1rem;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    }
-
-    a {
-      color: #00ff99;
-    }
-
-    a:hover {
-      color: #a020f0;
-    }
-
-    .donate a, .affiliate a {
-      display: inline-block;
-      margin: 5px;
-      padding: 8px 15px;
-      background-color: #ffcc00;
-      color: #000;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-
-    .donate a:hover, .affiliate a:hover {
-      background-color: #ffaa00;
-    }
-
-    .paypal-button {
-      background-color: #003087;
-      color: #fff !important;
-    }
-
-    .paypal-button:hover {
-      background-color: #001f5b;
+      box-shadow: 0 0 10px #a020f040;
     }
 
     footer {
       text-align: center;
-      padding: 15px;
-      background-color: #111;
-      color: #999;
-      font-size: 14px;
+      padding: 1rem;
+      background: #111;
+      color: #888;
     }
 
-    /* partículas */
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
-    /* Botões de download GTA */
     .download-btn {
       display: inline-block;
       margin: 10px 5px;
@@ -132,7 +144,6 @@
       transform: scale(1.05);
     }
 
-    /* Neon description */
     .neon-text {
       color:#00ff99;
       font-size:16px;
@@ -142,95 +153,70 @@
   </style>
 </head>
 <body>
+  <!-- Tela de introdução -->
+  <div class="intro">
+    <h1>🎮 GameZone360</h1>
+    <p>Carregando o seu mundo gamer...</p>
+  </div>
+
   <div id="particles-js"></div>
 
   <header>
     <h1>🎮 GameZone360</h1>
     <p>Seu checkpoint diário no mundo gamer</p>
     <nav>
-      <a href="#noticias">Notícias</a>
-      <a href="#dicas">Dicas</a>
       <a href="#jogos">Jogos</a>
+      <a href="#downloads">Downloads</a>
       <a href="#doacoes">Doações</a>
-      <a href="#downloads-gta">Downloads</a>
-      <a href="#comentarios">Comentários</a>
     </nav>
   </header>
 
-  <main>
-    <!-- Notícias -->
-    <section id="noticias">
-      <h2>📰 Últimas Notícias</h2>
+  <main id="downloads">
+
+    <!-- GTA San Andreas -->
+    <section style="margin-bottom:50px;">
+      <h2>🎮 GTA San Andreas</h2>
       <article>
-        <h3>GTA VI: Tudo o que sabemos até agora</h3>
-        <img src="gta6.jpg" alt="GTA VI Capa" width="100%">
-        <p>A Rockstar promete o maior mapa já feito na série. Veja o que esperar do novo GTA VI!</p>
-      </article>
-
-      <article>
-        <h3>Call of Duty 2025 confirmado</h3>
-        <p>Novos modos, armas e integração crossplay chegam com tudo!</p>
-      </article>
-    </section>
-
-    <!-- Dicas -->
-    <section id="dicas">
-      <h2>🧠 Dicas e Tutoriais</h2>
-      <article>
-        <h3>Como subir de patente no Free Fire</h3>
-        <p>Dicas práticas para evoluir rápido e dominar o campo de batalha.</p>
-      </article>
-    </section>
-
-    <!-- Jogos -->
-    <section id="jogos">
-      <h2>🎮 Links de Jogos</h2>
-      <ul>
-        <li><a href="https://www.rockstargames.com/V/" target="_blank">GTA V</a></li>
-        <li><a href="https://www.fortnite.com/" target="_blank">Fortnite</a></li>
-        <li><a href="https://minecraft.net/" target="_blank">Minecraft</a></li>
-      </ul>
-    </section>
-
-    <!-- Doações -->
-    <section id="doacoes">
-      <h2>💖 Apoie meu trabalho</h2>
-      <div class="donate">
-        <a href="https://ko-fi.com/jubekeumatola17" target="_blank">Ko-fi</a>
-        <a href="https://www.buymeacoffee.com/seuusuario" target="_blank">BuyMeACoffee</a>
-        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=SEU_EMAIL_DO_PAYPAL&currency_code=USD"
-           target="_blank" class="paypal-button">Doar com PayPal</a>
-      </div>
-    </section>
-
-    <!-- Downloads GTA -->
-    <section id="downloads-gta" style="margin-bottom:50px;">
-      <h2 style="color:#00ff99; text-shadow: 0 0 5px #a020f0;">🎮 Baixe GTA San Andreas</h2>
-      <article style="background: rgba(0,0,0,0.6); padding:20px; border-radius:15px; box-shadow: 0 0 20px #00ff99;">
-        <img src="gta_sa.jpg" alt="GTA San Andreas" width="100%" 
-             style="border-radius:15px; margin-bottom:15px; box-shadow:0 0 15px #a020f0;">
-        
+        <img src="gta_sa.jpg" alt="GTA San Andreas" width="100%" style="border-radius:15px; margin-bottom:15px;">
         <p class="neon-text">
           Já imaginou jogar <strong>GTA San Andreas</strong> com dublagem em português?<br>
           Baixe a <strong>dublagem</strong> se já tiver o jogo instalado, extraia na pasta do jogo e pronto!<br>
           GTA 100% em português. Seja feliz! 😎
         </p>
+        <a href="https://www.mediafire.com/file/7fnu9zltlve48xg/GT4_S4N_4NDR34S_%25281%2529.rar/file" target="_blank" class="download-btn">🎮 Jogo</a>
+        <a href="https://drive.google.com/file/d/1qby6LqFLAEpSZ4bAIgV_u-AR9YCOWbab/view" target="_blank" class="download-btn">🎙️ Dublagem</a>
+      </article>
+    </section>
 
-        <a href="https://www.mediafire.com/file/7fnu9zltlve48xg/GT4_S4N_4NDR34S_%25281%2529.rar/file" 
-           target="_blank" class="download-btn">🎮 Jogo</a>
-
-        <a href="https://drive.google.com/file/d/1qby6LqFLAEpSZ4bAIgV_u-AR9YCOWbab/view" 
-           target="_blank" class="download-btn">🎙️ Dublagem</a>
+    <!-- Call of Duty Black Ops 2 -->
+    <section style="margin-bottom:50px;">
+      <h2>🎯 Call of Duty: Black Ops 2</h2>
+      <article>
+        <img src="call_of_duty_black_ops_2.jpg" alt="Call of Duty Black Ops 2" width="100%" style="border-radius:15px; margin-bottom:15px;">
+        <p class="neon-text">
+          Um dos <strong>melhores FPS da história</strong> está aqui! 🌌<br>
+          Entre em batalhas épicas com gráficos intensos, missões secretas e ação sem limites.<br>
+          Baixe o jogo completo e a dublagem oficial em português logo abaixo 👇
+        </p>
+        <a href="https://www.mediafire.com/file/9cpqh0icqsytfm4/Calll.Of.Dutty.Bllack.Ops.2.iso/file" target="_blank" class="download-btn">🎮 Jogo</a>
+        <a href="https://www.centraldetraducoes.net.br/2012/11/dublagem-do-cod-black-ops-2-pc.html?m=1" target="_blank" class="download-btn">🎙️ Dublagem</a>
       </article>
     </section>
 
   </main>
 
+  <!-- Doações -->
+  <section id="doacoes" style="text-align:center; margin-bottom:50px;">
+    <h2>💖 Apoie meu trabalho</h2>
+    <a href="https://ko-fi.com/jubekeumatola17" target="_blank" class="download-btn">☕ Apoiar no Ko-fi</a>
+    <a href="https://www.buymeacoffee.com/seuusuario" target="_blank" class="download-btn">🍰 BuyMeACoffee</a>
+  </section>
+
   <footer>
     &copy; 2025 GameZone360 — Seu portal gamer completo.
   </footer>
 
-  <!-- Partículas -->
+  <!-- Script partículas -->
   <script src="particles.min.js"></script>
   <script>
     particlesJS("particles-js", {
